@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; background: #F7F5F8; }
+  body { @apply bg-paper text-ink font-sans antialiased; overscroll-behavior-y: none; -webkit-text-size-adjust: 100%; }
+  input, select, textarea, button { font: inherit; }
+  :focus-visible { outline: 2px solid #561269; outline-offset: 2px; }
+  button { cursor: pointer; }
+}
+@layer components {
+  .card { @apply bg-white rounded-2xl shadow-card border border-line; }
+  .btn { @apply inline-flex items-center justify-center gap-2 min-h-[48px] px-4 rounded-xl font-semibold text-[15px] transition active:scale-[.98] disabled:opacity-40 disabled:pointer-events-none; }
+  .btn-primary { @apply btn bg-brand text-white hover:bg-brand-700; }
+  .btn-soft { @apply btn bg-brand-100 text-brand hover:bg-brand-200/60; }
+  .btn-ghost { @apply btn bg-white border border-line text-ink hover:bg-brand-50; }
+  .btn-danger { @apply btn bg-neg/10 text-neg hover:bg-neg/20; }
+  .input { @apply w-full min-h-[48px] rounded-xl border border-line bg-white px-3.5 text-[16px] text-ink placeholder:text-ink-faint; }
+  .input:focus { @apply border-brand; }
+  .label { @apply block text-[13px] font-medium text-ink-soft mb-1.5; }
+  .icon-btn { @apply inline-flex items-center justify-center w-11 h-11 rounded-full text-ink-soft hover:bg-brand-50 active:bg-brand-100; }
+  .row { @apply flex items-center justify-between gap-3 py-3 border-b border-line last:border-0; }
+  .h-section { @apply text-[17px] font-semibold mt-7 mb-2.5 px-1; }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+  .pt-safe { padding-top: env(safe-area-inset-top); }
+}
+.sheet-enter-active, .sheet-leave-active { transition: opacity .2s ease; }
+.sheet-enter-active .sheet-panel, .sheet-leave-active .sheet-panel { transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+.sheet-enter-from, .sheet-leave-to { opacity: 0; }
+.sheet-enter-from .sheet-panel, .sheet-leave-to .sheet-panel { transform: translateY(40px); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
